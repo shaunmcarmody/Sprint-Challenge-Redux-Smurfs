@@ -14,7 +14,19 @@ export const PUT_SMURF_REQUEST = 'PUT_SMURF_REQUEST';
 export const PUT_SMURF_SUCCESS = 'PUT_SMURF_SUCCESS';
 
 export const addSmurf = smurf => dispatch => {
-
+  dispatch({ type: POST_SMURF_REQUEST });
+  axios
+    .post('http://localhost:3333/smurfs', {
+      name: smurf.name,
+      age: smurf.age,
+      height: smurf.height
+    })
+    .then(res => {
+      dispatch({ type: POST_SMURF_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: POST_SMURF_FAILURE, payload: err.message });
+    })
 }
 
 export const getSmurfs = () => dispatch => {

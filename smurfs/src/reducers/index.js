@@ -43,11 +43,17 @@ const initialState = {
         ...state, fetchSmurfs: false, smurfs: action.payload
       }
      case POST_SMURF_FAILURE:
-      return state;
+      return {
+        ...state, updatingSmurf: false, error: action.payload
+      }
      case POST_SMURF_REQUEST:
-      return state;
+      return {
+        ...state, updatingSmurf: true, error: null
+      }
      case POST_SMURF_SUCCESS:
-      return state;
+      return {
+        ...state, updatingSmurf: false, smurfs: action.payload
+      }
      case PUT_SMURF_FAILURE:
       return state;
      case PUT_SMURF_REQUEST:
