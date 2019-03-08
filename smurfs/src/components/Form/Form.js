@@ -7,7 +7,7 @@ class Form extends React.Component {
         super();
         this.state = {
             name: '',
-            age: null,
+            age: '',
             height: ''
         }
     }
@@ -22,7 +22,7 @@ class Form extends React.Component {
     submit = e => {
         e.preventDefault();
         this.props.addSmurf(this.state);
-        this.setState({ name: '', age: null, height: '' });
+        this.setState({ name: '', age: '', height: '' });
     }
 
     render() {
@@ -34,20 +34,20 @@ class Form extends React.Component {
                     name="name"
                     onChange={this.handleChange}
                     placeholder="name"
-                    value={this.name}
+                    value={this.state.name}
                 />
                 <input
                     name="age"
                     onChange={this.handleChange}
                     placeholder="age"
                     type="number"
-                    value={this.age}
+                    value={this.state.age}
                 />
                 <input
                     name="height"
                     onChange={this.handleChange}
                     placeholder="height"
-                    value={this.height}
+                    value={this.state.height}
                 />
                 <button>Submit</button>
             </form>
