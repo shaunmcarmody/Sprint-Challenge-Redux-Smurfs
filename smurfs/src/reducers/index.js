@@ -25,11 +25,17 @@ const initialState = {
  export default (state = initialState, action) => {
    switch(action.type) {
      case DELETE_SMURF_FAILURE:
-      return state;
+      return {
+        ...state, deletingSmurf: false, error: action.payload
+      }
      case DELETE_SMURF_REQUEST:
-      return state;
+      return {
+        ...state, deletingSmurf: true, error: null
+      }
      case DELETE_SMURF_SUCCESS:
-      return state;
+      return {
+        ...state, deletingSmurf: false, smurfs: action.payload
+      }
      case GET_SMURFS_FAILURE:
       return {
         ...state, fetchSmurfs: false, error: action.payload
