@@ -1,15 +1,40 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
+import axios from 'axios';
 
-/*
-  For this project you'll need at least 2 action creators for the main portion,
-   and 2 more for the stretch problem.
-   Be sure to include action types for each type of action creator. Also, be sure to mind
-     the "pending" states like, fetching, creating, updating and deleting.
-   C - addSmurf
-   R - getSmurfs
-   U - updateSmurf
-   D - deleteSmurf
-*/
+export const DELETE_SMURF_FAILURE = 'DELETE_SMURF_FAILURE';
+export const DELETE_SMURF_REQUEST = 'DELETE_SMURF_REQUEST';
+export const DELETE_SMURF_SUCCESS = 'DELETE_SMURF_SUCCESS';
+export const GET_SMURFS_FAILURE = 'GET_SMURFS_FAILURE';
+export const GET_SMURFS_REQUEST = 'GET_SMURFS_REQUEST';
+export const GET_SMURFS_SUCCESS = 'GET_SMURFS_SUCCESS';
+export const POST_SMURF_FAILURE = 'POST_SMURF_FAILURE';
+export const POST_SMURF_REQUEST = 'POST_SMURF_REQUEST';
+export const POST_SMURF_SUCCESS = 'POST_SMURF_SUCCESS';
+export const PUT_SMURF_FAILURE = 'PUT_SMURF_FAILURE';
+export const PUT_SMURF_REQUEST = 'PUT_SMURF_REQUEST';
+export const PUT_SMURF_SUCCESS = 'PUT_SMURF_SUCCESS';
+
+export const addSmurf = smurf => dispatch => {
+
+}
+
+export const getSmurfs = () => dispatch => {
+  dispatch({ type: GET_SMURFS_REQUEST });
+  axios
+    .get('http://localhost:3333/smurfs')
+    .then(res => {
+      dispatch({ type: GET_SMURFS_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: GET_SMURFS_FAILURE, payload: err.message });
+    })
+}
+
+export const updateSmurf = smurf => dispatch => {
+
+}
+
+export const deleteSmurf = smurf => dispatch => {
+
+}
+
+
